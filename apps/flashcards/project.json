@@ -5,7 +5,9 @@
   "targets": {
     "build": {
       "executor": "@angular-devkit/build-angular:browser",
-      "outputs": ["{options.outputPath}"],
+      "outputs": [
+        "{options.outputPath}"
+      ],
       "options": {
         "outputPath": "dist/apps/flashcards",
         "index": "apps/flashcards/src/index.html",
@@ -17,7 +19,10 @@
           "apps/flashcards/src/favicon.ico",
           "apps/flashcards/src/assets"
         ],
-        "styles": ["apps/flashcards/src/styles.scss"],
+        "styles": [
+          "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
+          "apps/flashcards/src/styles.scss"
+        ],
         "scripts": []
       },
       "configurations": {
@@ -85,7 +90,9 @@
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/apps/flashcards"],
+      "outputs": [
+        "coverage/apps/flashcards"
+      ],
       "options": {
         "jestConfig": "apps/flashcards/jest.config.ts",
         "passWithNoTests": true
