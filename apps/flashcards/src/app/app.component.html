@@ -1,9 +1,6 @@
-<div style="text-align: center">
-  <h1>Welcome to flashcards!</h1>
-  <img
-    width="450"
-    src="https://raw.githubusercontent.com/nrwl/nx/master/images/nx-logo.png"
-    alt="Nx - Smart, Fast and Extensible Build System"
-  />
+<div id="content">
+  <mat-card>
+    <mat-card-title>Welcome to flashcards!</mat-card-title>
+    <mat-card-content>Message: {{ hello$ | async | json }}</mat-card-content>
+  </mat-card>
 </div>
-<div>Message: {{ hello$ | async | json }}</div>
