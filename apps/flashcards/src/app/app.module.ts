@@ -12,9 +12,10 @@ import { environment } from './../environments/environment';
 import { MatCardModule } from '@angular/material/card';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { DecksState } from './state/decks/decks.state';
+import { CardsListComponent } from './components/cards-list/cards-list.component';
 
 @NgModule({
-  declarations: [AppComponent, NxWelcomeComponent],
+  declarations: [AppComponent, NxWelcomeComponent, CardsListComponent],
   imports: [
     BrowserModule,
     HttpClientModule,
