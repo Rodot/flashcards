@@ -1,0 +1,13 @@
+<mat-form-field appearance="fill">
+  <mat-label>Front</mat-label>
+  <textarea matInput></textarea>
+</mat-form-field>
+
+<mat-form-field appearance="fill">
+  <mat-label>Back</mat-label>
+  <textarea matInput></textarea>
+</mat-form-field>
+
+<button mat-button (click)="addCard({ front: 'front', back: 'back' })">
+  Add
+</button>
