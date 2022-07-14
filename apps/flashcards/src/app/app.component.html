@@ -3,5 +3,6 @@
     <mat-card-title>Welcome to flashcards!</mat-card-title>
     <mat-card-content>Message: {{ hello$ | async | json }}</mat-card-content>
     <flashcards-cards-list [deck]="deck$ | async"> </flashcards-cards-list>
+    <flashcards-card-add></flashcards-card-add>
   </mat-card>
 </div>

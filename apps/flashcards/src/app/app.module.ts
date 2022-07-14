@@ -9,13 +9,24 @@ import { NgxsModule } from '@ngxs/store';
 import { environment } from './../environments/environment';
 
 // Material
+import { FormsModule } from '@angular/forms';
+import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 import { MatSidenavModule } from '@angular/material/sidenav';
+
 import { DecksState } from './state/decks/decks.state';
 import { CardsListComponent } from './components/cards-list/cards-list.component';
+import { CardAddComponent } from './components/card-add/card-add.component';
 
 @NgModule({
-  declarations: [AppComponent, NxWelcomeComponent, CardsListComponent],
+  declarations: [
+    AppComponent,
+    NxWelcomeComponent,
+    CardsListComponent,
+    CardAddComponent,
+  ],
   imports: [
     BrowserModule,
     HttpClientModule,
@@ -24,7 +35,11 @@ import { CardsListComponent } from './components/cards-list/cards-list.component
       developmentMode: !environment.production,
     }),
     // Material
+    FormsModule,
+    MatButtonModule,
     MatCardModule,
+    MatFormFieldModule,
+    MatInputModule,
     MatSidenavModule,
   ],
   providers: [],

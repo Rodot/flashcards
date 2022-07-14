@@ -1,4 +1,5 @@
-import { Selector, State } from '@ngxs/store';
+import { State, Action, StateContext, Selector } from '@ngxs/store';
+import { AddCard } from '../../actions/flashcards.actions';
 import { DecksStateModel, Deck } from './decks.model';
 
 @State<DecksStateModel>({
@@ -16,5 +17,16 @@ export class DecksState {
   @Selector()
   static getDeck(state: DecksStateModel): Deck {
     return state.deck;
+  }
+
+  @Action(AddCard)
+  addCard(
+    { getState, patchState }: StateContext<DecksStateModel>,
+    { payload: newCard }: AddCard
+  ) {
+    const deck = getState().deck;
+    const newDeck = { ...deck, cards: [...deck.cards, newCard] };
+    console.log('new deck:', newDeck);
+    patchState({ deck: newDeck });
   }
 }

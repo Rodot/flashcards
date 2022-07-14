@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Card } from '../../state/decks/decks.model';
 import { Store } from '@ngxs/store';
 import { AddCard } from '../../actions/flashcards.actions';
@@ -9,12 +9,21 @@ import { AddCard } from '../../actions/flashcards.actions';
   styleUrls: ['./card-add.component.css'],
 })
 export class CardAddComponent implements OnInit {
+  frontText = '';
+  backText = '';
+
+  @ViewChild('frontInput') frontInput: ElementRef<HTMLInputElement>;
+
   constructor(private store: Store) {}
 
   ngOnInit(): void {}
 
-  addCard(card: Card) {
+  addCard() {
+    const card = { front: this.frontText, back: this.backText };
     console.log('Adding card', card);
     this.store.dispatch(new AddCard(card));
+    this.frontText = '';
+    this.backText = '';
+    this.frontInput.nativeElement.focus();
   }
 }

@@ -1,13 +1,11 @@
 <mat-form-field appearance="fill">
   <mat-label>Front</mat-label>
-  <textarea matInput></textarea>
+  <input #frontInput matInput type="text" [(ngModel)]="frontText" />
 </mat-form-field>
 
 <mat-form-field appearance="fill">
   <mat-label>Back</mat-label>
-  <textarea matInput></textarea>
+  <input matInput type="text" [(ngModel)]="backText" />
 </mat-form-field>
 
-<button mat-button (click)="addCard({ front: 'front', back: 'back' })">
-  Add
-</button>
+<button mat-button (click)="addCard()">Add</button>
