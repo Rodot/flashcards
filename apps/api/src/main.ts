@@ -8,6 +8,10 @@ import { NestFactory } from '@nestjs/core';
 
 import { AppModule } from './app/app.module';
 
+import { AppDataSource } from './data-source';
+import { Card } from './entity/Card';
+import { Deck } from './entity/Deck';
+
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   const globalPrefix = 'api';
@@ -19,4 +23,8 @@ async function bootstrap() {
   );
 }
 
-bootstrap();
+AppDataSource.initialize()
+  .then(async () => {
+    bootstrap();
+  })
+  .catch((error) => console.log(error));
