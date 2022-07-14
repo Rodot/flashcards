@@ -1,5 +1,6 @@
 import { Entity, PrimaryGeneratedColumn, Column, OneToMany } from 'typeorm';
 import { CardEntity } from './Card.entity';
+import { IsNotEmpty } from 'class-validator';
 
 @Entity()
 export class DeckEntity {
@@ -7,6 +8,7 @@ export class DeckEntity {
   id: number;
 
   @Column()
+  @IsNotEmpty()
   name: string;
 
   @OneToMany(() => CardEntity, (card) => card.deck)
