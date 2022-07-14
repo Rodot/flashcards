@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Deck } from '../../state/decks/decks.model';
+import { Deck } from '@flashcards/api-interfaces';
 
 @Component({
   selector: 'flashcards-cards-list',

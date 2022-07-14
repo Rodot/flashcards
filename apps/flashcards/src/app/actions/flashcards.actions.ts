@@ -1,4 +1,4 @@
-import { Card } from '../state/decks/decks.model';
+import { Card } from '@flashcards/api-interfaces';
 
 export class AddCard {
   static readonly type = '[FLASHCARDS] Add';

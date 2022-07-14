@@ -1,11 +1,4 @@
-export interface Card {
-  front: string;
-  back: string;
-}
-
-export interface Deck {
-  cards: Array<Card>;
-}
+import { Deck } from '@flashcards/api-interfaces';
 
 export interface DecksStateModel {
   deck: Deck;

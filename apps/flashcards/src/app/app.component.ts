@@ -1,10 +1,9 @@
 import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Message } from '@flashcards/api-interfaces';
+import { Deck, Message } from '@flashcards/api-interfaces';
 import { Select, Store } from '@ngxs/store';
 import { DecksState } from './state/decks/decks.state';
 import { Observable } from 'rxjs';
-import { Deck } from './state/decks/decks.model';
 
 @Component({
   selector: 'flashcards-root',

@@ -1,6 +1,7 @@
+import { Deck } from '@flashcards/api-interfaces';
 import { State, Action, StateContext, Selector } from '@ngxs/store';
 import { AddCard } from '../../actions/flashcards.actions';
-import { DecksStateModel, Deck } from './decks.model';
+import { DecksStateModel } from './decks.model';
 
 @State<DecksStateModel>({
   name: 'decks',

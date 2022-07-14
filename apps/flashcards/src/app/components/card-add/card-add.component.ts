@@ -1,5 +1,4 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { Card } from '../../state/decks/decks.model';
 import { Store } from '@ngxs/store';
 import { AddCard } from '../../actions/flashcards.actions';
 
