@@ -1,18 +1,18 @@
 import 'reflect-metadata';
 import { DataSource } from 'typeorm';
-import { Card } from './entity/Card';
-import { Deck } from './entity/Deck';
+import { CardEntity } from './entity/Card.entity';
+import { DeckEntity } from './entity/Deck.entity';
 
 export const AppDataSource = new DataSource({
   type: 'postgres',
   host: 'localhost',
   port: 5432,
-  username: 'rodot',
+  username: 'postgres',
   password: '',
   database: 'postgres',
   synchronize: true,
   logging: false,
-  entities: [Card, Deck],
+  entities: [CardEntity, DeckEntity],
   migrations: [],
   subscribers: [],
 });
