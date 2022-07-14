@@ -1,6 +1,7 @@
 import { Deck } from '@flashcards/api-interfaces';
 import { State, Action, StateContext, Selector } from '@ngxs/store';
 import { AddCard } from '../../actions/flashcards.actions';
+import { addCardToDeck } from '../../services/deck.service';
 import { DecksStateModel } from './decks.model';
 
 @State<DecksStateModel>({
@@ -26,8 +27,7 @@ export class DecksState {
     { payload: newCard }: AddCard
   ) {
     const deck = getState().deck;
-    const newDeck = { ...deck, cards: [...deck.cards, newCard] };
-    console.log('new deck:', newDeck);
+    const newDeck = addCardToDeck(newCard, deck);
     patchState({ deck: newDeck });
   }
 }
