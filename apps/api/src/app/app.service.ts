@@ -32,7 +32,6 @@ export class AppService {
     // save entity
     const deckRepository = AppDataSource.getRepository(DeckEntity);
     await deckRepository.save(deck);
-    console.log(deck);
     return deck.id;
   }
 
@@ -49,8 +48,6 @@ export class AppService {
     // save entity
     const cardRepository = AppDataSource.getRepository(CardEntity);
     await cardRepository.save(card);
-    console.log(deck);
-    console.log(card);
     return card.id;
   }
 }
