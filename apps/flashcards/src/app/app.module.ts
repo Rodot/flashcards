@@ -19,6 +19,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { DecksState } from './state/decks/decks.state';
 import { CardsListComponent } from './components/cards-list/cards-list.component';
 import { CardAddComponent } from './components/card-add/card-add.component';
+import { DeckAddComponent } from './components/deck-add/deck-add.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { CardAddComponent } from './components/card-add/card-add.component';
     NxWelcomeComponent,
     CardsListComponent,
     CardAddComponent,
+    DeckAddComponent,
   ],
   imports: [
     BrowserModule,

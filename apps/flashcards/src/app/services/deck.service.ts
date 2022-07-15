@@ -9,15 +9,15 @@ import { Observable } from 'rxjs';
 export class DeckService {
   constructor(private http: HttpClient) {}
 
-  fetch(): Observable<Deck[]> {
-    return this.http.get<Deck[]>('/api/decks');
+  addDeck(body: CreateDeckDto): Observable<number> {
+    return this.http.post<number>('/api/deck', body);
   }
 
   addCard(body: CreateCardDto): Observable<number> {
     return this.http.post<number>('/api/card', body);
   }
 
-  addDeck(body: CreateDeckDto): Observable<number> {
-    return this.http.post<number>('/api/decks', body);
+  fetch(): Observable<Deck[]> {
+    return this.http.get<Deck[]>('/api/decks');
   }
 }

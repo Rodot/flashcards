@@ -11,14 +11,10 @@ import { AddCard } from '../../actions/flashcards.actions';
 export class CardAddComponent implements OnInit {
   @Input() deck: Deck;
 
-  frontText = '';
-  backText = '';
-
   @ViewChild('frontInput') frontInput: ElementRef<HTMLInputElement>;
 
-  constructor(private store: Store) {}
-
-  ngOnInit(): void {}
+  frontText = '';
+  backText = '';
 
   addCard(deck: Deck) {
     const cardDto: CreateCardDto = {
@@ -31,4 +27,7 @@ export class CardAddComponent implements OnInit {
     this.backText = '';
     this.frontInput.nativeElement.focus();
   }
+
+  constructor(private store: Store) {}
+  ngOnInit(): void {}
 }

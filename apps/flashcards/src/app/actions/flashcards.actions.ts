@@ -1,4 +1,9 @@
-import { CreateCardDto } from '@flashcards/api-interfaces';
+import { CreateCardDto, CreateDeckDto } from '@flashcards/api-interfaces';
+
+export class AddDeck {
+  static readonly type = '[FLASHCARDS] Add deck';
+  constructor(public payload: CreateDeckDto) {}
+}
 
 export class AddCard {
   static readonly type = '[FLASHCARDS] Add card';
