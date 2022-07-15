@@ -1,6 +1,5 @@
 <div id="content">
   <mat-card-title>Welcome to flashcards!</mat-card-title>
-  <mat-card-content>Message: {{ hello$ | async | json }}</mat-card-content>
   <mat-card *ngFor="let deck of decks$ | async">
     <flashcards-cards-list [deck]="deck"> </flashcards-cards-list>
   </mat-card>

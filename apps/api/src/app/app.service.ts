@@ -1,19 +1,11 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
-import {
-  CreateCardDto,
-  CreateDeckDto,
-  Message,
-} from '@flashcards/api-interfaces';
+import { CreateCardDto, CreateDeckDto } from '@flashcards/api-interfaces';
 import { DeckEntity } from '../entity/Deck.entity';
 import { AppDataSource } from '../data-source';
 import { CardEntity } from '../entity/Card.entity';
 
 @Injectable()
 export class AppService {
-  getData(): Message {
-    return { message: 'Welcome to api!' };
-  }
-
   async getDecks(): Promise<DeckEntity[]> {
     const deckRepository = AppDataSource.getRepository(DeckEntity);
     const decks = await deckRepository.find({

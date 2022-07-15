@@ -1,7 +1,3 @@
-export interface Message {
-  message: string;
-}
-
 export interface Card {
   id: number;
   frontString: string;
