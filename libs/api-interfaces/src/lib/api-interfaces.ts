@@ -3,10 +3,12 @@ export interface Message {
 }
 
 export interface Card {
-  front: string;
-  back: string;
+  id: number;
+  frontString: string;
+  backString: string;
 }
 
 export interface Deck {
+  id: number;
   cards: Array<Card>;
 }

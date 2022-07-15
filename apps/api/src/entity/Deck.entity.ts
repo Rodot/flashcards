@@ -1,14 +1,13 @@
+import { Deck } from '@flashcards/api-interfaces';
 import { Entity, PrimaryGeneratedColumn, Column, OneToMany } from 'typeorm';
 import { CardEntity } from './Card.entity';
-import { IsNotEmpty } from 'class-validator';
 
 @Entity()
-export class DeckEntity {
+export class DeckEntity implements Deck{
   @PrimaryGeneratedColumn()
   id: number;
 
   @Column()
-  @IsNotEmpty()
   name: string;
 
   @OneToMany(() => CardEntity, (card) => card.deck)

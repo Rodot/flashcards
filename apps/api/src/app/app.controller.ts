@@ -1,11 +1,13 @@
-import { Body, Controller, Get, NotFoundException, Post } from '@nestjs/common';
+import { Body, Controller, Get, Post } from '@nestjs/common';
 
-import { Message } from '@flashcards/api-interfaces';
+import {
+  Message,
+  CreateCardDto,
+  CreateDeckDto,
+} from '@flashcards/api-interfaces';
 
 import { AppService } from './app.service';
 import { DeckEntity } from '../entity/Deck.entity';
-import { AppDataSource } from '../data-source';
-import { CardEntity } from '../entity/Card.entity';
 
 @Controller()
 export class AppController {
@@ -17,30 +19,17 @@ export class AppController {
   }
 
   @Post('deck')
-  async createDeck(@Body() deck: DeckEntity): Promise<number> {
-    const deckRepository = AppDataSource.getRepository(DeckEntity);
-    await deckRepository.save(deck);
-    console.log(deck);
-    return deck.id;
+  async createDeck(@Body() deckDto: CreateDeckDto): Promise<number> {
+    return this.appService.createDeck(deckDto);
   }
 
   @Post('card')
-  async createCard(@Body() card: CardEntity): Promise<number> {
-    const cardRepository = AppDataSource.getRepository(CardEntity);
-    await cardRepository.save(card);
-    console.log(card);
-    return card.id;
+  async createCard(@Body() cardDto: CreateCardDto): Promise<number> {
+    return this.appService.crateCard(cardDto);
   }
 
   @Get('decks')
   async getDecks(): Promise<DeckEntity[]> {
-    const deckRepository = AppDataSource.getRepository(DeckEntity);
-    const decks = await deckRepository.find({
-      relations: {
-        cards: true,
-      },
-    });
-    if (!decks) throw NotFoundException;
-    return decks;
+    return this.appService.getDecks();
   }
 }
