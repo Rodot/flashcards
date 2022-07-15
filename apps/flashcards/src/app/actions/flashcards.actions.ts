@@ -1,9 +1,11 @@
-import { Card } from '@flashcards/api-interfaces';
+import { CreateCardDto } from '@flashcards/api-interfaces';
 
 export class AddCard {
-  static readonly type = '[FLASHCARDS] Add';
+  static readonly type = '[FLASHCARDS] Add card';
+  constructor(public payload: CreateCardDto) {}
+}
 
-  constructor(public payload: Card) {
-    console.log('AddCard payload:', payload);
-  }
+export class FetchDecks {
+  static readonly type = '[FLASHCARDS] Fetch decks';
+  constructor() {}
 }

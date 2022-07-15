@@ -7,7 +7,7 @@ import { Deck } from '@flashcards/api-interfaces';
   styleUrls: ['./cards-list.component.css'],
 })
 export class CardsListComponent implements OnInit {
-  @Input() deck: Deck | null | undefined;
+  @Input() deck: Deck;
 
   constructor() {}
 

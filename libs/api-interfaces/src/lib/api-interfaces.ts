@@ -10,5 +10,6 @@ export interface Card {
 
 export interface Deck {
   id: number;
+  name: string;
   cards: Array<Card>;
 }

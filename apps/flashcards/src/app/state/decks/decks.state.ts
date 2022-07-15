@@ -1,33 +1,44 @@
+import { Injectable } from '@angular/core';
 import { Deck } from '@flashcards/api-interfaces';
 import { State, Action, StateContext, Selector } from '@ngxs/store';
-import { AddCard } from '../../actions/flashcards.actions';
-import { addCardToDeck } from '../../services/deck.service';
+import { AddCard, FetchDecks } from '../../actions/flashcards.actions';
+import { DeckService } from '../../services/deck.service';
 import { DecksStateModel } from './decks.model';
 
 @State<DecksStateModel>({
   name: 'decks',
   defaults: {
-    deck: {
-      cards: [
-        { front: 'front text 1', back: 'back text 1' },
-        { front: 'front text 2', back: 'back text 2' },
-      ],
-    },
+    decks: [],
   },
 })
+@Injectable()
 export class DecksState {
+  constructor(private deckService: DeckService) {}
+
   @Selector()
-  static getDeck(state: DecksStateModel): Deck {
-    return state.deck;
+  static getDecks(state: DecksStateModel): Deck[] {
+    return state.decks;
   }
 
   @Action(AddCard)
   addCard(
-    { getState, patchState }: StateContext<DecksStateModel>,
-    { payload: newCard }: AddCard
+    { dispatch }: StateContext<DecksStateModel>,
+    { payload: cardDto }: AddCard
   ) {
-    const deck = getState().deck;
-    const newDeck = addCardToDeck(newCard, deck);
-    patchState({ deck: newDeck });
+    this.deckService.addCard(cardDto).subscribe({
+      next: () => {
+        dispatch(new FetchDecks());
+      },
+    });
+  }
+
+  @Action(FetchDecks)
+  fetchDecks({ patchState }: StateContext<DecksStateModel>) {
+    this.deckService.fetch().subscribe((decks: Deck[]) => {
+      if (!decks) throw Error;
+      patchState({
+        decks,
+      });
+    });
   }
 }

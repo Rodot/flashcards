@@ -1,4 +1,5 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
+import { CreateCardDto, Deck } from '@flashcards/api-interfaces';
 import { Store } from '@ngxs/store';
 import { AddCard } from '../../actions/flashcards.actions';
 
@@ -8,6 +9,8 @@ import { AddCard } from '../../actions/flashcards.actions';
   styleUrls: ['./card-add.component.css'],
 })
 export class CardAddComponent implements OnInit {
+  @Input() deck: Deck;
+
   frontText = '';
   backText = '';
 
@@ -17,10 +20,13 @@ export class CardAddComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  addCard() {
-    const card = { front: this.frontText, back: this.backText };
-    console.log('Adding card', card);
-    this.store.dispatch(new AddCard(card));
+  addCard(deck: Deck) {
+    const cardDto: CreateCardDto = {
+      frontString: this.frontText,
+      backString: this.backText,
+      deckId: deck.id,
+    };
+    this.store.dispatch(new AddCard(cardDto));
     this.frontText = '';
     this.backText = '';
     this.frontInput.nativeElement.focus();

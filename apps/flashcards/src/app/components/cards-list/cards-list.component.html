@@ -1,4 +1,6 @@
+<h2>{{ deck.name }}</h2>
 <mat-card *ngFor="let card of deck?.cards">
-  <div>{{ card.front }}</div>
-  <div>{{ card.back }}</div>
+  <div>{{ card.frontString }}</div>
+  <div>{{ card.backString }}</div>
 </mat-card>
+<flashcards-card-add [deck]="deck"></flashcards-card-add>
